@@ -1,25 +1,44 @@
-// script.js
-const UNIT = 32; // Each unit in the world is 32 pixels.
-const WIDTH = 10; // Width of the grid in world units.
-const HEIGHT = 10; // Height of the grid in world units.
-
 function setup() {
-    createCanvas(WIDTH * UNIT, HEIGHT * UNIT);
+    createCanvas(400, 400);
+    noLoop();
 }
 
 function draw() {
-    background(220); // Set the background color.
+    background(255);
+    drawHexGrid();
+}
 
-    // Draw the grid (optional).
-    stroke(0); // Set stroke color to black.
-    fill(255); // Set fill color to white.
-    for (let x = 0; x < WIDTH; x++) {
-        for (let y = 0; y < HEIGHT; y++) {
-            rect(x * UNIT, y * UNIT, UNIT, UNIT);
+function drawHexGrid() {
+    const radius = 20; // radius of the hexagons
+    const xOffset = 3 * radius / 2; // horizontal distance between centers
+    const yOffset = sqrt(3) * radius; // vertical distance between centers
+    const rows = 5; // number of rows
+    const cols = 5; // number of columns
+
+    for (let row = 0; row < rows; row++) {
+        for (let col = 0; col < cols; col++) {
+            // Calculate the center position of the hexagon
+            let x = col * xOffset;
+            let y = row * yOffset;
+
+            // Offset every other row
+            if (col % 2 == 1) {
+                y += yOffset / 2;
+            }
+
+            // Draw the hexagon
+            drawHexagon(x, y, radius);
         }
     }
+}
 
-    // Draw a sample marble (you can customize this).
-    fill(255, 0, 0); // Red color for the marble.
-    ellipse(UNIT * 1.5, UNIT * 1.5, UNIT * 0.8); // Position and size of the marble.
+function drawHexagon(x, y, radius) {
+    beginShape();
+    for (let i = 0; i < 6; i++) {
+        let angle = TWO_PI / 6 * i;
+        let x_i = x + radius * cos(angle);
+        let y_i = y + radius * sin(angle);
+        vertex(x_i, y_i);
+    }
+    endShape(CLOSE);
 }
