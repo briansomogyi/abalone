@@ -1,5 +1,5 @@
 function setup() {
-    createCanvas(400, 400);
+    createCanvas(800, 400);
     noLoop();
 }
 
@@ -9,11 +9,11 @@ function draw() {
 }
 
 function drawHexGrid() {
-    const radius = 20; // radius of the hexagons
+    const radius = 16; // radius of the hexagons
     const xOffset = 3 * radius / 2; // horizontal distance between centers
     const yOffset = sqrt(3) * radius; // vertical distance between centers
-    const rows = 5; // number of rows
-    const cols = 5; // number of columns
+    const rows = 28; // number of rows
+    const cols = 28; // number of columns
 
     for (let row = 0; row < rows; row++) {
         for (let col = 0; col < cols; col++) {
@@ -36,9 +36,20 @@ function drawHexagon(x, y, radius) {
     beginShape();
     for (let i = 0; i < 6; i++) {
         let angle = TWO_PI / 6 * i;
-        let x_i = x + radius * cos(angle);
-        let y_i = y + radius * sin(angle);
+        let x_i = y + radius * sin(angle);
+        let y_i = x + radius * cos(angle);
         vertex(x_i, y_i);
     }
     endShape(CLOSE);
+
+   /* fillShape();
+    for (let i = 7; i < 14; i++) {
+        let angle = TWO_PI / 6 * i;
+        let x_i = y + radius * sin(angle);
+        let y_i = x + radius * cos(angle);
+        vertex(x_i, y_i);
+    }
+
+    */
+   
 }
