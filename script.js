@@ -42,14 +42,17 @@ function drawHexagon(x, y, radius) {
     }
     endShape(CLOSE);
 
-   /* fillShape();
-    for (let i = 7; i < 14; i++) {
-        let angle = TWO_PI / 6 * i;
-        let x_i = y + radius * sin(angle);
-        let y_i = x + radius * cos(angle);
-        vertex(x_i, y_i);
-    }
+    /* fillShape();
+     for (let i = 7; i < 14; i++) {
+         let angle = TWO_PI / 6 * i;
+         let x_i = y + radius * sin(angle);
+         let y_i = x + radius * cos(angle);
+         vertex(x_i, y_i);
+     }
+ 
+     */
 
-    */
-   
+    // Giulia, fă ceva!
+
+
 }
