@@ -4,6 +4,12 @@ function setup() {
 }
 
 function draw() {
+    background(255);
+
+    let radius = 20; // radius of the hexagons
+    let xOffset = 3 * radius * sqrt(3) / 2; // horizontal distance between centers
+    let yOffset = 1.5 * radius; // vertical distance between centers
+
     background(220);
     drawHexGrid();
 }
@@ -15,18 +21,16 @@ function drawHexGrid() {
     const rows = 28; // number of rows
     const cols = 28; // number of columns
 
-    for (let row = 0; row < rows; row++) {
-        for (let col = 0; col < cols; col++) {
-            // Calculate the center position of the hexagon
-            let x = col * xOffset;
-            let y = row * yOffset;
+    for (let row = 0; row < 5; row++) {
+        for (let col = 0; col < 5; col++) {
+            let x = xOffset * col;
+            let y = yOffset * row;
 
-            // Offset every other row
+            // staggering odd rows
             if (col % 2 == 1) {
-                y += yOffset / 2;
+                y += radius * 0.75;
             }
 
-            // Draw the hexagon
             drawHexagon(x, y, radius);
         }
     }
